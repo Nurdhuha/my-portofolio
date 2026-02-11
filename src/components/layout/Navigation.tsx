@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Container } from '../ui/Container';
 import { Button } from '../ui/Button';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Simple close/menu icons as SVG components
 const MenuIcon = () => (
@@ -34,11 +35,11 @@ export const Navigation = () => {
     ];
 
     return (
-        <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/80 backdrop-blur-md border-b border-neutral-200' : 'bg-transparent'}`}>
+        <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/50 backdrop-blur-md' : 'bg-transparent'}`}>
             <Container>
                 <div className="flex items-center justify-between h-16 md:h-20">
-                    <Link href="/" className="text-xl font-bold tracking-tight">
-                        Portfolio
+                    <Link href="/" className={`text-xl font-bold tracking-tight ${scrolled ? 'text-white' : 'text-neutral-900 dark:text-white'}`}>
+                        Nur Dhuha
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -47,7 +48,7 @@ export const Navigation = () => {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className="text-sm font-medium text-neutral-600 hover:text-black transition-colors"
+                                className={`text-sm font-medium transition-colors ${scrolled ? 'text-neutral-300 hover:text-white' : 'text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white'}`}
                                 onClick={(e) => {
                                     e.preventDefault();
                                     document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
@@ -63,7 +64,7 @@ export const Navigation = () => {
 
                     {/* Mobile Menu Button */}
                     <button
-                        className="md:hidden p-2 -mr-2 text-neutral-600"
+                        className={`md:hidden p-2 -mr-2 ${scrolled ? 'text-white' : 'text-neutral-600 dark:text-white'}`}
                         onClick={() => setIsOpen(!isOpen)}
                         aria-label="Toggle menu"
                     >
@@ -72,15 +73,28 @@ export const Navigation = () => {
                 </div>
             </Container>
 
+            {/* Smooth Animated White Line */}
+            <AnimatePresence>
+                {scrolled && (
+                    <motion.div
+                        className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-white/50 to-transparent"
+                        initial={{ scaleX: 0, opacity: 0 }}
+                        animate={{ scaleX: 1, opacity: 1 }}
+                        exit={{ scaleX: 0, opacity: 0 }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                    />
+                )}
+            </AnimatePresence>
+
             {/* Mobile Navigation */}
             {isOpen && (
-                <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-neutral-200 p-4 shadow-lg animate-in slide-in-from-top-2">
+                <div className="md:hidden absolute top-full left-0 right-0 bg-neutral-900/90 backdrop-blur-xl border-b border-white/10 p-4 shadow-lg animate-in slide-in-from-top-2">
                     <nav className="flex flex-col gap-4">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className="text-sm font-medium text-neutral-600 hover:text-black py-2"
+                                className="text-sm font-medium text-neutral-300 hover:text-white py-2"
                                 onClick={(e) => {
                                     e.preventDefault();
                                     setIsOpen(false);

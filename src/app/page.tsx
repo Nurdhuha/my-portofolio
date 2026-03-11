@@ -105,7 +105,7 @@ export default function Home() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
             "Python", "TypeScript", "React", "Next.js",
-            "SQL", "Node.js", "Git", "Figma"
+            "SQL", "Node.js", "Git", "PHP"
           ].map((skill, index) => (
             <FadeIn key={skill} delay={index * 0.1} className="flex h-full">
               <div className="flex items-center justify-center p-6 border border-neutral-200 dark:border-white/10 rounded-xl transition-all duration-300 w-full h-full hover:bg-white hover:text-black hover:border-transparent hover:shadow-xl hover:scale-105 group bg-white/5 backdrop-blur-sm">
@@ -170,6 +170,14 @@ export default function Home() {
               image: "/project-6.png",
               tags: ["Game Dev", "Simulation", "Cultural"],
               link: "https://youtu.be/yNl-YaZbyMU?si=mIOFWrRKs9V8zxhe"
+            },
+            {
+              id: 7,
+              title: "UKIM Website",
+              desc: "Official website built for UKIM organization to manage content and strengthen organizational branding, providing a professional digital presence.",
+              image: "/project-7.png",
+              tags: ["Web Development", "CMS", "Branding"],
+              link: "https://ukim.unesa.ac.id"
             }
           ].map((project, index) => (
             <FadeIn key={project.id} className="group grid md:grid-cols-2 gap-8 items-center">

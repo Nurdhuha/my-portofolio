@@ -107,7 +107,7 @@ export default function Home() {
             "Python", "TypeScript", "React", "Next.js",
             "SQL", "Node.js", "Git", "PHP"
           ].map((skill, index) => (
-            <FadeIn key={skill} delay={index * 0.1} className="flex h-full">
+            <FadeIn key={skill} delay={index * 0.05} className="flex h-full">
               <div className="flex items-center justify-center p-6 border border-neutral-200 dark:border-white/10 rounded-xl transition-all duration-300 w-full h-full hover:bg-white hover:text-black hover:border-transparent hover:shadow-xl hover:scale-105 group bg-white/5 backdrop-blur-sm">
                 <span className="font-medium text-lg group-hover:font-bold transition-all">{skill}</span>
               </div>

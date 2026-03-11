@@ -81,7 +81,7 @@ export const Navigation = () => {
                         initial={{ scaleX: 0, opacity: 0 }}
                         animate={{ scaleX: 1, opacity: 1 }}
                         exit={{ scaleX: 0, opacity: 0 }}
-                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
                     />
                 )}
             </AnimatePresence>

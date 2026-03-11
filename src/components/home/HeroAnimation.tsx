@@ -1,80 +1,78 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 export const HeroAnimation = () => {
+    const prefersReducedMotion = useReducedMotion();
+
+    // Jika user memilih reduced motion, tampilkan background statis
+    if (prefersReducedMotion) {
+        return (
+            <div className="absolute inset-0 w-full h-full overflow-hidden -z-10 bg-linear-to-b from-neutral-300 via-neutral-100 to-neutral-300 dark:from-black dark:via-neutral-800 dark:to-black">
+                <div className="absolute inset-0 bg-white/30 dark:bg-black/30" />
+                <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] md:w-[400px] md:h-[400px] bg-neutral-300/30 rounded-full blur-2xl dark:bg-neutral-800/30" />
+                <div className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] md:w-[500px] md:h-[500px] bg-neutral-400/30 rounded-full blur-2xl dark:bg-neutral-700/30" />
+            </div>
+        );
+    }
+
     return (
-        <div className="absolute inset-0 w-full h-full overflow-hidden perspective-[1000px] -z-10 bg-linear-to-b from-neutral-300 via-neutral-100 to-neutral-300 dark:from-black dark:via-neutral-800 dark:to-black">
-            <div className="absolute inset-0 bg-white/30 dark:bg-black/30 backdrop-blur-3xl" />
+        <div className="absolute inset-0 w-full h-full overflow-hidden -z-10 bg-linear-to-b from-neutral-300 via-neutral-100 to-neutral-300 dark:from-black dark:via-neutral-800 dark:to-black">
+            <div className="absolute inset-0 bg-white/30 dark:bg-black/30" />
 
-            {/* Animated Gradient Background Blobs (Monochrome) */}
+            {/* Animated Gradient Blobs — ukuran lebih kecil, blur lebih ringan, tanpa blend mode */}
             <motion.div
-                className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-neutral-300/40 rounded-full blur-3xl mix-blend-multiply dark:bg-neutral-800/40"
+                className="absolute top-1/4 left-1/4 w-[300px] h-[300px] md:w-[400px] md:h-[400px] bg-neutral-300/30 rounded-full blur-2xl dark:bg-neutral-800/30"
                 animate={{
-                    x: [-100, 100, -100],
-                    y: [-50, 50, -50],
-                    scale: [1, 1.2, 1],
+                    x: [-50, 50, -50],
+                    y: [-30, 30, -30],
+                    scale: [1, 1.1, 1],
                 }}
                 transition={{
-                    duration: 15,
+                    duration: 20,
                     repeat: Infinity,
                     ease: "easeInOut",
                 }}
+                style={{ willChange: "transform" }}
             />
             <motion.div
-                className="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-neutral-400/40 rounded-full blur-3xl mix-blend-multiply dark:bg-neutral-700/40"
+                className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] md:w-[500px] md:h-[500px] bg-neutral-400/30 rounded-full blur-2xl dark:bg-neutral-700/30"
                 animate={{
-                    x: [100, -100, 100],
-                    y: [50, -50, 50],
-                    scale: [1.2, 1, 1.2],
+                    x: [50, -50, 50],
+                    y: [30, -30, 30],
+                    scale: [1.1, 1, 1.1],
                 }}
                 transition={{
-                    duration: 18,
+                    duration: 25,
                     repeat: Infinity,
                     ease: "easeInOut",
                 }}
+                style={{ willChange: "transform" }}
             />
 
-            {/* 3D Glass Card Container - Centered */}
+            {/* Simplified Glass Circle — tanpa backdrop-blur, tanpa 3D rotation continuous */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <motion.div
-                    className="relative w-[500px] h-[500px] preserve-3d"
+                    className="relative w-[250px] h-[250px] md:w-[400px] md:h-[400px]"
                     animate={{
-                        rotateY: [0, 360],
-                        rotateX: [10, -10, 10],
+                        rotate: [0, 360],
                     }}
                     transition={{
-                        rotateY: {
-                            duration: 30,
-                            repeat: Infinity,
-                            ease: "linear",
-                        },
-                        rotateX: {
-                            duration: 8,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                        },
+                        duration: 60,
+                        repeat: Infinity,
+                        ease: "linear",
                     }}
-                    style={{ transformStyle: "preserve-3d" }}
+                    style={{ willChange: "transform" }}
                 >
-                    {/* Main Glass Card */}
-                    <div className="absolute inset-0 rounded-full border border-neutral-400/30 bg-white/5 backdrop-blur-xl shadow-2xl flex items-center justify-center transform-style-3d backface-visible dark:border-white/20 dark:bg-white/5">
-                        <div className="w-[350px] h-[350px] rounded-full border border-neutral-500/20 dark:border-white/10" />
+                    {/* Main Circle */}
+                    <div className="absolute inset-0 rounded-full border border-neutral-400/20 bg-white/5 shadow-lg flex items-center justify-center dark:border-white/10 dark:bg-white/5">
+                        <div className="w-[180px] h-[180px] md:w-[280px] md:h-[280px] rounded-full border border-neutral-500/15 dark:border-white/10" />
                     </div>
 
-                    {/* Floating Rings */}
-                    <motion.div
-                        className="absolute inset-0 rounded-full border border-neutral-400/30 dark:border-white/20"
-                        animate={{ rotateX: 360, rotateY: 360 }}
-                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    {/* Single Subtle Ring */}
+                    <div
+                        className="absolute inset-0 rounded-full border border-neutral-400/15 dark:border-white/10"
                         style={{ transform: "scale(1.2)" }}
-                    />
-
-                    <motion.div
-                        className="absolute inset-0 rounded-full border border-neutral-400/30 dark:border-white/20"
-                        animate={{ rotateX: -360, rotateY: 180 }}
-                        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                        style={{ transform: "scale(1.5)" }}
                     />
                 </motion.div>
             </div>

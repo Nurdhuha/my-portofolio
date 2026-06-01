@@ -62,7 +62,7 @@ export default function Home() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <FadeIn className="relative bg-neutral-100 rounded-2xl overflow-hidden shadow-2xl border border-neutral-200 dark:border-white/5 order-2 md:order-1">
             <Image
-              src="/recent.png"
+              src="/hackbit_studio.png"
               alt="Hackbit Studio Recent Work"
               width={1600}
               height={900}
@@ -74,23 +74,31 @@ export default function Home() {
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider mb-6">
               Recently Work
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
               Hackbit Studio
             </h2>
-            <p className="text-xl text-neutral-600 dark:text-neutral-300 mb-8 leading-relaxed font-light">
-              Hackbit Studio is a high-velocity website creation service designed to redefine digital delivery. We bridge the gap between complex requirements and rapid execution by leveraging a state-of-the-art tech stack.
-            </p>
-            <p className="text-neutral-600 dark:text-neutral-400 mb-10 leading-relaxed">
-              Our focus on extreme speed and operational efficiency ensures your business stays ahead with a high-performance web presence built on the latest technology.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <span className="flex items-center gap-2 text-sm font-medium text-neutral-500">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                In Development
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 text-green-700 dark:bg-green-950/30 dark:text-green-400 text-xs font-semibold mb-6 w-fit">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
               </span>
-              <span className="flex items-center gap-2 text-sm font-medium text-neutral-500">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                Latest Tech Stack
+              Fully Ready & Active
+            </div>
+            <p className="text-xl text-neutral-600 dark:text-neutral-300 mb-6 leading-relaxed font-light">
+              Hackbit Studio is now fully launched and focused on custom AI system automation services. We specialize in designing and engineering bespoke AI-driven agents, intelligent data processors, and autonomous workflows that seamlessly integrate into your business operations.
+            </p>
+            <p className="text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed">
+              By replacing manual overhead with smart, self-healing automation systems, we enable modern enterprises to scale operational capacity, unlock deeper analytical insights, and dramatically accelerate growth.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <span className="px-3 py-1 text-xs font-semibold bg-neutral-100 dark:bg-white/5 text-neutral-600 dark:text-neutral-300 rounded-full border border-neutral-200/50 dark:border-white/5">
+                AI Automation
+              </span>
+              <span className="px-3 py-1 text-xs font-semibold bg-neutral-100 dark:bg-white/5 text-neutral-600 dark:text-neutral-300 rounded-full border border-neutral-200/50 dark:border-white/5">
+                Agentic Workflows
+              </span>
+              <span className="px-3 py-1 text-xs font-semibold bg-neutral-100 dark:bg-white/5 text-neutral-600 dark:text-neutral-300 rounded-full border border-neutral-200/50 dark:border-white/5">
+                Custom Integrations
               </span>
             </div>
           </FadeIn>
